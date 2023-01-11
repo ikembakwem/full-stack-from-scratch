@@ -1,9 +1,7 @@
 import express from "express"
 
-// console.log(express)
+import { PORT } from "./config"
 
-const PORT = 4000
-const HOST = "0.0.0.0"
 const htmlGreeting =
   "Dear <strong>User</strong> , we are pleased  to have you onboard"
 
@@ -17,10 +15,11 @@ server.use("/", (req, res) => {
   res.render("index", {
     variable:
       "This is the value of an ejs variable passed from express",
-    greeting: htmlGreeting
+    greeting: htmlGreeting,
+    creator: { name: "Peter", age: 500 }
   })
 })
 
-server.listen(PORT, HOST, () => {
-  console.info(`Server listening on port ${PORT} in ${HOST}`)
+server.listen(PORT, () => {
+  console.info(`Server listening on port ${PORT}`)
 })
